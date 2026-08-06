@@ -1,113 +1,90 @@
-:root {
-    --cor-primaria: #673ab7; /* Roxo vibrante */
-    --cor-secundaria: #9575cd; /* Lilás suave */
-    --cor-fundo: #f3e5f5; /* Lavanda claríssimo para o fundo */
-    --cor-texto: #151428;
-    --cor-contraste: #ede7f6; /* Roxo acinzentado muito claro para contraste suave */
-    --cor-botao: #f9f9f9;
-
-    --fonte-texto: 'Segoe UI', sans-serif;
-}
-
+/* ==========================================
+   1. CONFIGURAÇÕES GERAIS E ACESSIBILIDADE
+   ========================================== */
 * {
-    transition: background-color 0.8s ease;
-}
-
-.tema-escuro {
-    --cor-primaria: #b39ddb; /* Lilás claro para contraste no escuro */
-    --cor-secundaria: #d1c4e9; /* Lilás claríssimo */
-    --cor-fundo: #1a1a2e; /* Azul arroxeado escuro para o fundo do tema escuro */
-    --cor-texto: #ffffff;
-    --cor-contraste: #311b92; /* Roxo profundo para contraste no escuro */
-    --cor-botao: #151428;
-}
-
-.tema-escuro p {
-    color: var(--cor-texto);
-}
-
-.tema-escuro header p {
-    color: var(--cor-contraste);
-    font-weight: 600;
-}
-
-.tema-escuro a {
-    color: var(--cor-secundaria);
-}
-
-.tema-escuro button {
-    border: none;
-    background-color: var(--cor-botao);
-    color: var(--cor-texto);
-}
-
-.tema-escuro article {
-    background-color: #f7eeee0c;
-}
-
-.tema-escuro h2 {
-    color: var(--cor-primaria);
-}
-
-.tema-escuro .artigo-autor {
-    color: var(--cor-secundaria);
-}
-
-.tema-escuro .btn-tema-escuro {
-    background-color: var(--cor-secundaria);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    max-width: 100vw;
-    font-family: var(--fonte-texto);
+    font-family: Arial, Helvetica, sans-serif;
+    /* Contraste: Fundo claro (#f4f4f9) com texto escuro (#1a1a1a) */
+    background-color: #f4f4f9;
+    color: #1a1a1a;
+    line-height: 1.6; /* Melhor legibilidade */
 }
 
-header {
-    background-color: var(--cor-primaria);
-    color: var(--cor-contraste);
+.header {
+    background-color: #0d47a1; /* Azul escuro */
+    color: #ffffff;            /* Texto branco para alto contraste */
     text-align: center;
-    margin: 0 auto;
-    padding: 16px;
+    padding: 2rem 1rem;
 }
 
-main {
-    background-color: var(--cor-fundo);
-    color: var(--cor-primaria);
-    margin: 0 auto;
-    padding: 16px;
+/* ==========================================
+   2. CENTRALIZAÇÃO E LAYOUT (OPÇÃO 1: FLEXBOX)
+   ========================================== */
+.container {
+    /* Ativa o Flexbox para alinhar os cards */
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;             /* Permite que os cards dobrem de linha em telas menores */
+    justify-content: center;     /* CENTRALIZA os cards na horizontal */
+    gap: 20px;                   /* Espaço entre os cards */
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;              /* Centraliza o próprio container na tela */
 }
 
-article {
-    display: flex;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-    margin: 16px;
-    gap: 16px;
-    padding: 16px;
-    flex: 1 1 25%;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    background-color: white; /* Adicionado para que os artigos tenham fundo branco no tema claro */
+/* ==========================================
+   3. ESTILO DOS CARDS
+   ========================================== */
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+    
+    /* Largura padrão do card */
+    width: 100%;
+    max-width: 350px; 
+    
+    /* OPÇÃO 2 PARA CENTRALIZAR (Descomente se não usar Flexbox no container):
+       margin: 20px auto; 
+    */
 }
 
-img {
-    width: 80px;
-    height: 80px;
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Garante que a imagem não distorça */
 }
 
-.artigo-autor {
-    font-weight: bold;
+.card-content {
+    padding: 1.5rem;
 }
 
-.btn-tema-escuro {
-    position: fixed;
-    bottom: 16px;
-    right: 16px;
-    font-size: 32px;
-    padding: 12px;
-    background-color: var(--cor-primaria);
-    border-radius: 50%;
+.card-content h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: #0d47a1;
+}
+
+.card-content p {
+    font-size: 1rem;
+    color: #333333; /* Texto escuro garantindo boa leitura */
+}
+
+/* ==========================================
+   4. RESPONSIVIDADE (MEDIA QUERIES)
+   ========================================== */
+/* Ajustes para telas bem pequenas (Celulares até 480px) */
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .container {
+        padding: 10px;
+    }
 }
